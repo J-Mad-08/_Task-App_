@@ -1,0 +1,23 @@
+# version: '3.8'
+# services:
+#   db:
+#     image: 'postgres:12'
+#     ports:
+#       - '54320:5432'
+#   volumes: -./pgdata:/var/lib/postgresql/data
+#   environment:
+#     # HOW TO HIDE THIS
+#     - POSTGRES_USER=${POSTGRES_USER}
+#     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#     - POSTGRES_DB=${POSTGRES_USER}
+#   # CREATE THE DB NAME ^
+version: '3.8'
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./api:/app
+      - /Users/jirehmaddox/Desktop/interviews/IBM_1/_Task-App_/api/.yarn/cache
