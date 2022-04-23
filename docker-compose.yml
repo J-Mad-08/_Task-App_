@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+  # backend
   api:
     build: ./api
     container_name: api_c
@@ -8,3 +9,15 @@ services:
     volumes:
       - ./api:/app
       - /Users/jirehmaddox/Desktop/interviews/IBM_1/_Task-App_/api/.yarn/cache
+      # frontend
+  tasks-views:
+    build: ./tasks-views
+    container_name: tasks-views_c
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./tasks-views:/app
+      - /Users/jirehmaddox/Desktop/interviews/IBM_1/_Task-App_/tasks-views/.yarn/cache
+      # keep alive react container & starts in interactive mode
+    stdin_open: true
+    tty: true
