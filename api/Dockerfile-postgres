@@ -1,0 +1,15 @@
+FROM postgres
+COPY ./scripts/db_init.sql /docker-entrypoint-initdb.d/
+
+# Run the rest of the commands as the ``postgres`` user 
+USER postgres
+# POSTGRES_DB
+# POSTGRES_USER
+# POSTGRES_PASSWORD
+
+# Expose the PostgreSQL port
+EXPOSE 5432
+# Add VOLUMEs to allow backup of config, logs and databases
+VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
+# Set the default command to run when starting the container
+CMD ["postgres"]
